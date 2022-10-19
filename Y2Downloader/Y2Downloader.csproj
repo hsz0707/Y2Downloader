@@ -60,15 +60,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shell\Y2Downloader.Common\Y2Downloader.Common.csproj">
+    <ProjectReference Include="..\Shell\Y2Downloader.Common\Y2Downloader.Common.csproj">
       <Project>{78F5493D-3310-4FB1-B3B5-E82AD0C0FD77}</Project>
       <Name>Y2Downloader.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Shell\Y2Downloader.Logger.Disc\Y2Downloader.Logger.Disc.csproj">
+    <ProjectReference Include="..\Shell\Y2Downloader.Logger.Disc\Y2Downloader.Logger.Disc.csproj">
       <Project>{B67203A1-3C79-4168-AB82-D1A5B2F81139}</Project>
       <Name>Y2Downloader.Logger.Disc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Shell\Y2Downloader.Services.Y2Mate\Y2Downloader.Services.Y2Mate.csproj">
+    <ProjectReference Include="..\Shell\Y2Downloader.Services.Y2Mate\Y2Downloader.Services.Y2Mate.csproj">
       <Project>{4D9DA4CA-7C37-4A8C-94E5-B9C9B9935711}</Project>
       <Name>Y2Downloader.Services.Y2Mate</Name>
     </ProjectReference>
