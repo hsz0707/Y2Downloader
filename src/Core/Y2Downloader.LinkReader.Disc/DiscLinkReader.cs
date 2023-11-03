@@ -10,13 +10,13 @@ public class DiscLinkReader : ILinkReader
 {
     private const string FailedLinksFileName = "FailedLinks.txt";
 
-    private const string PostProcessingFolderName = "SRC_POST";
+    private const string PostProcessingFolderName = "Post Proessing";
 
     private const string RootFolderName = "Downloads";
 
     private const string SourceFileFilter = "*.txt";
 
-    private const string SourceLocationFolderName = "SRC";
+    private const string SourceLocationFolderName = "Download Source";
 
     private string? _failedLinksFile;
 

@@ -32,7 +32,7 @@ public class MicrosoftDiManager : IIoCManager
             .AddSingleton<IClientLogger, TLogger>()
             .AddSingleton<ILogger, DiscLogger>()
             .AddSingleton<ILinkReader, DiscLinkReader>()
-            .AddSingleton<IY2Downloader, Y2MateDownloader>()
+            .AddSingleton<IY2Downloader, Y2Downloader>()
             .AddSingleton<IY2DownloaderApp, Y2DownloaderApp>()
             .BuildServiceProvider();
     }
