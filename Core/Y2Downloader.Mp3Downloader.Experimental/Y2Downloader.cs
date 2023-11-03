@@ -6,10 +6,8 @@ using System.Reflection;
 using Common;
 using Common.Helpers;
 using Common.Interfaces;
-
-using DotNetTools.SharpGrabber;
-using DotNetTools.SharpGrabber.Grabbed;
-using DotNetTools.SharpGrabber.YouTube;
+using YoutubeExplode;
+using YoutubeExplode.Videos.Streams;
 
 public class Y2Downloader : IY2Downloader
 {
@@ -24,8 +22,6 @@ public class Y2Downloader : IY2Downloader
     private readonly ILogger _logger;
 
     private string? _downloadPath;
-
-    private YouTubeGrabber? _grabber;
 
     public Y2Downloader(ILogger logger, IClientLogger clientLogger)
     {
@@ -49,8 +45,14 @@ public class Y2Downloader : IY2Downloader
                     Directory.CreateDirectory(downloadPath);
                 }
 
-                var mediaResult = await ProcessLinkAsync(link);
-                var fileNameWithNoSpecSymbols = RegexPool.SpecSymbol().Replace(mediaResult.Title, "");
+                var youtube = new YoutubeClient();
+                var videoId = GetVideoId(link);
+                
+                var video = await youtube.Videos.GetAsync(videoId);
+                var streamInfoSet = await youtube.Videos.Streams.GetManifestAsync(videoId);
+                var audioStreamInfo = streamInfoSet.GetAudioOnlyStreams();
+
+                var fileNameWithNoSpecSymbols = RegexPool.SpecSymbol().Replace(video.Title, "");
 
                 if (fileNameSet.Contains(fileNameWithNoSpecSymbols))
                 {
@@ -59,7 +61,7 @@ public class Y2Downloader : IY2Downloader
                 else
                 {
                     var saveFilePath = Path.Combine(downloadPath, $"{fileNameWithNoSpecSymbols}.{AudioFileExtension}");
-                    await File.WriteAllBytesAsync(saveFilePath, mediaResult.Bytes);
+                    await youtube.Videos.Streams.DownloadAsync(audioStreamInfo.GetWithHighestBitrate(), saveFilePath);
 
                     fileNameSet.Add(fileNameWithNoSpecSymbols);
 
@@ -86,33 +88,6 @@ public class Y2Downloader : IY2Downloader
     public void Init()
     {
         SetPath();
-
-        _grabber = new YouTubeGrabber(GrabberServices.Default);
-    }
-
-    private async Task<MediaLinkProcessingResult> ProcessLinkAsync(string link)
-    {
-        var grabber = ExceptionBuilder.GetNotNullOrThrowException(_grabber);
-        var url = new Uri(link);
-        var options = new GrabOptions(GrabOptionFlags.All);
-
-        var grabResult = await grabber.GrabAsync(url, CancellationToken.None, options);
-        var media = grabResult.Resources<GrabbedMedia>()
-            .LastOrDefault(x => x.Channels == MediaChannels.Audio);
-
-        media = ExceptionBuilder.GetNotNullOrThrowException(media);
-
-        using var client = new HttpClient();
-        using var response = await client.GetAsync(media.ResourceUri);
-
-        await using var originalStream = await response.Content.ReadAsStreamAsync();
-        await using var stream = await grabResult.WrapStreamAsync(originalStream);
-        var bytes = new byte[int.MaxValue / 10];
-        var total = await stream.ReadAsync(bytes, 0, bytes.Length);
-
-        var result = new MediaLinkProcessingResult(grabResult.Title, bytes.Take(total).ToArray());
-
-        return result;
     }
 
     private void SetPath()
@@ -126,7 +101,6 @@ public class Y2Downloader : IY2Downloader
         _downloadPath = Path.Combine(rootPath, RootFolderName, assemblyName, AudioFileDownloadFolderName);
     }
 
-    [Obsolete("It was used in older implementation.")]
     private static string GetVideoId(string link)
     {
         var match = RegexPool.VideoId().Match(link);
