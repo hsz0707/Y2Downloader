@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Y2Downloader.ConsoleHost", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Y2Downloader.IoC.MicrosoftDi", "..\src\Y2Downloader.IoC.MicrosoftDi\Y2Downloader.IoC.MicrosoftDi.csproj", "{C9E629D0-A46C-4F87-B0A9-280B821A3B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Y2Downloader.Mp3Downloader.Experimental", "..\Core\Y2Downloader.Mp3Downloader.Experimental\Y2Downloader.Mp3Downloader.Experimental.csproj", "{AECA6CB6-0C84-4353-8B10-858D56BBE2FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Y2Downloader.Mp3Downloader.Experimental", "..\src\Core\Y2Downloader.Mp3Downloader.Experimental\Y2Downloader.Mp3Downloader.Experimental.csproj", "{57FA37F5-804D-4264-A5AE-F0755037B6A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{62281B75-671D-4E82-AA9F-16918623426F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentalMediaDownloader.IntegrationTests", "..\test\ExperimentalMediaDownloader.IntegrationTests\ExperimentalMediaDownloader.IntegrationTests.csproj", "{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +53,14 @@ Global
 		{C9E629D0-A46C-4F87-B0A9-280B821A3B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9E629D0-A46C-4F87-B0A9-280B821A3B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9E629D0-A46C-4F87-B0A9-280B821A3B15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AECA6CB6-0C84-4353-8B10-858D56BBE2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AECA6CB6-0C84-4353-8B10-858D56BBE2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AECA6CB6-0C84-4353-8B10-858D56BBE2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AECA6CB6-0C84-4353-8B10-858D56BBE2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57FA37F5-804D-4264-A5AE-F0755037B6A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57FA37F5-804D-4264-A5AE-F0755037B6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57FA37F5-804D-4264-A5AE-F0755037B6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57FA37F5-804D-4264-A5AE-F0755037B6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,7 +69,8 @@ Global
 		{63591B4E-2A53-46CB-9813-DD3110D36E68} = {4DBB73E5-5DC7-4500-9FF8-A33BA3C36AA1}
 		{D4A4B0B7-BF62-44FD-BD56-4BBC5825D404} = {4DBB73E5-5DC7-4500-9FF8-A33BA3C36AA1}
 		{29F6A22F-B52F-4EAE-89C0-E31F4F623C07} = {4DBB73E5-5DC7-4500-9FF8-A33BA3C36AA1}
-		{AECA6CB6-0C84-4353-8B10-858D56BBE2FD} = {4DBB73E5-5DC7-4500-9FF8-A33BA3C36AA1}
+		{57FA37F5-804D-4264-A5AE-F0755037B6A9} = {4DBB73E5-5DC7-4500-9FF8-A33BA3C36AA1}
+		{EDAFF7E4-15CC-4FD7-9A2B-9F7FEDCAE737} = {62281B75-671D-4E82-AA9F-16918623426F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B95EF55-7838-418B-BEC8-D3F32D9433BA}

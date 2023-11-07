@@ -1,5 +1,0 @@
-﻿Old implementation:
-https://github.com/ArttuKuikka/Y2Sharp
-
-New implementation:
-https://stackoverflow.com/questions/39877884/c-sharp-download-the-sound-of-a-youtube-video

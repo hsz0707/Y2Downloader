@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Core\Y2Downloader.Common\Y2Downloader.Common.csproj" />
+    <ProjectReference Include="..\Y2Downloader.Common\Y2Downloader.Common.csproj" />
   </ItemGroup>
 
 </Project>

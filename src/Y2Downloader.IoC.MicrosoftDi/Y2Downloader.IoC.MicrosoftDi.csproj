@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Y2Downloader.Mp3Downloader.Experimental\Y2Downloader.Mp3Downloader.Experimental.csproj" />
     <ProjectReference Include="..\Core\Y2Downloader.Common\Y2Downloader.Common.csproj" />
     <ProjectReference Include="..\Core\Y2Downloader.LinkReader.Disc\Y2Downloader.LinkReader.Disc.csproj" />
     <ProjectReference Include="..\Core\Y2Downloader.Logger.Disc\Y2Downloader.Logger.Disc.csproj" />
+    <ProjectReference Include="..\Core\Y2Downloader.Mp3Downloader.Experimental\Y2Downloader.Mp3Downloader.Experimental.csproj" />
     <ProjectReference Include="..\Y2Downloader\Y2Downloader.csproj" />
   </ItemGroup>
 
