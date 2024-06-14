@@ -11,33 +11,32 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # 更新到使用 Node.js 20 的版本
+      uses: actions/checkout@v4  # 更新到使用 Node.js 20 的版本
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3  # 更新到使用 Node.js 20 的版本
+      uses: actions/setup-dotnet@v4  # 更新到使用 Node.js 20 的版本
       with:
         dotnet-version: '8.0.302'  # 指定具体的 .NET SDK 版本
 
     - name: Restore dependencies
-      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
+      working-directory: src/Y2Downloader  # 设置工作目录为项目文件所在目录
       run: dotnet restore
 
     - name: Build
-      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
+      working-directory: src/Y2Downloader  # 设置工作目录为项目文件所在目录
       run: dotnet build --configuration Release --no-restore
 
     - name: List build output files
-      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
+      working-directory: src/Y2Downloader  # 设置工作目录为项目文件所在目录
       run: ls -la bin/Release/net8.0  # 列出编译输出文件以检查路径是否正确
 
     - name: Test
-      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
+      working-directory: src/Y2Downloader  # 设置工作目录为项目文件所在目录
       run: dotnet test --configuration Release --no-build --verbosity normal
 
     - name: Upload build artifacts
       if: success()  # 仅在构建成功后上传工件
-      uses: actions/upload-artifact@v3  # 更新到使用 Node.js 20 的版本
+      uses: actions/upload-artifact@v4  # 更新到使用 Node.js 20 的版本
       with:
         name: build-artifacts
-        path: |
-          src/Y2Downloader/bin/Release/net8.0  # 确认上传路径是否正确
+        path: src/Y2Downloader/bin/Release/net8.0  # 确认上传路径是否正确
