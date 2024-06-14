@@ -36,4 +36,4 @@ jobs:
       with:
         name: build-artifacts
         path: |
-          src/Y2Downloader/bin/Release/net8.0  # 指定要上传的文件或目录路径
+          src/Y2Downloader  # 指定要上传的文件或目录路径
