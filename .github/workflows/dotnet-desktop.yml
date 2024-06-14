@@ -3,7 +3,7 @@ name: Build and Test
 on:
   push:
     branches:
-      - master  # 指定在 master 分支推送时触发构建
+      - master
 
 jobs:
   build:
@@ -16,13 +16,16 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '8.0.302'  # 指定 .NET 8 版本
+        dotnet-version: '8.0.302'  # 指定具体的 .NET SDK 版本
 
     - name: Restore dependencies
+      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
       run: dotnet restore
 
     - name: Build
+      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
+      working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
       run: dotnet test --configuration Release --no-build --verbosity normal
