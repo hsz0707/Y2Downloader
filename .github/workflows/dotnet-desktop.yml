@@ -29,3 +29,11 @@ jobs:
     - name: Test
       working-directory: src/Y2Downloader  # 设置工作目录为项目的根目录
       run: dotnet test --configuration Release --no-build --verbosity normal
+
+    - name: Upload build artifacts
+      if: success()  # 仅在构建成功后上传工件
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: |
+          src/Y2Downloader/bin/Release/net8.0  # 指定要上传的文件或目录路径
